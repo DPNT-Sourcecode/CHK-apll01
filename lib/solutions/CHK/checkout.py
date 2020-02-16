@@ -41,17 +41,8 @@ class Checkout(object):
         for multi_offer in multi_offers:
             sku = multi_offer.get_sku() 
             quantity = multi_offer.get_quantity()   
-            multi_price = multi_offer.get_price()     
-
-
-            if type(sku) == list:
-                for item in sku:
-                
-                while quantity<= multi_sku:
-                    total += multi_price
-                    items[sku] -= quantity 
-
-            elif sku in items:
+            multi_price = multi_offer.get_price()      
+            if sku in items:
                 while quantity<= items[sku]:
                     total += multi_price
                     items[sku] -= quantity
@@ -64,3 +55,4 @@ class Checkout(object):
             if items[sku] >=0: total=total+(items[sku]*sku_price)
 
         return(total)
+
