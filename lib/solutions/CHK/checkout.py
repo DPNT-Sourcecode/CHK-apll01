@@ -55,4 +55,3 @@ class Checkout(object):
             if items[sku] >=0: total=total+(items[sku]*sku_price)
 
         return(total)
-
