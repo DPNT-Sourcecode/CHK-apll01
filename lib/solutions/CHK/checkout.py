@@ -14,3 +14,14 @@ class Checkout(object):
             self.items[sku] -= 1
             if self.items[sku] == 0:
                 self.items.pop(sku)    
+
+    def get_total(self):
+        total = 0
+        items = self.items.copy()
+        
+        for sku in items:
+            price = self.shop.get_price(sku)
+            if price == -1:
+                return -1
+            else:
+                total=total+(items[sku]*price)

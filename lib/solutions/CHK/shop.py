@@ -8,7 +8,10 @@ class Shop(object):
     }
 
     def get_price(self, sku){
-        return self.prices[sku]
+        if sku in self.prices:
+            return self.prices[sku]
+        else:
+            return -1
 
     def add_offer(self, sku, quantity, price){
         offer = (sku, quantity, price)
