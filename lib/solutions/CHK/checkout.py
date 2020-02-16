@@ -23,9 +23,13 @@ class Checkout(object):
         for offer in offers:
             offer = offers[offer]
             print(offer)
+            print(offer[1])
             print(items[offer[0]])
+            
             while offer[1]<= items[offer[0]]:
                 total += items[2]
+                print(items[offer[0]])
+                print(offer[1])
                 items[offer[0]] -= offer[1]
 
         for sku in items:
@@ -36,3 +40,4 @@ class Checkout(object):
                 total=total+(items[sku]*price)
 
         return total
+
