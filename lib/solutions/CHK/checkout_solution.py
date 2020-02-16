@@ -15,7 +15,7 @@ def checkout(skus):
 
     checkout = Checkout(shop)
 
-    for sku in sku_list:
+    for sku in skus:
         checkout.add_item(sku)
 
     return checkout.get_total()
