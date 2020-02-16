@@ -13,7 +13,7 @@ def checkout(skus):
         ]
 
     for index, price in enumerate(price_list):
-        shop.add_offer(chr(65+index) ,price)
+        shop.set_price(chr(65+index) ,price)
 
 
     shop.add_offer('A', 5, 200)
