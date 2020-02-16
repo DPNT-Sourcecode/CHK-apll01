@@ -1,5 +1,5 @@
 class Shop(object):
-    self __init__(self):
+    def __init__(self):
         self.prices = dict()
         self.offers = dict()
 
@@ -9,3 +9,12 @@ class Shop(object):
 
     def get_price(self, sku){
         return self.prices[sku]
+
+    def add_offer(self, sku, quantity, price){
+        offer = (sku, quantity, price)
+        self.offers[sku] = offer
+    }
+
+    def get_offers(self){
+        return self.offers
+    }
