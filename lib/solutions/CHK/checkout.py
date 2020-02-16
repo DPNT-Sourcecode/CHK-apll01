@@ -35,5 +35,3 @@ class Checkout(object):
                 total=total+(items[sku]*price)
 
         return total
-
-
