@@ -19,4 +19,3 @@ def checkout(skus):
         checkout.add_item(sku)
 
     return checkout.get_total()
-

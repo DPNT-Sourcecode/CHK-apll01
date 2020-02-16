@@ -1,4 +1,6 @@
 from solutions.CHK import checkout_solution
 
 
-print(checkout_solution.checkout('A'))
+class TestCheckout():
+    def test_checkout(self):
+        assert checkout_solution.checkout('A') == 3
