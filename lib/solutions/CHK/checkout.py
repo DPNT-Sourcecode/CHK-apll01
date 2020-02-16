@@ -1,3 +1,5 @@
+import operator
+
 class Checkout(object):
     def __init__(self, shop):
         self.shop = shop
@@ -18,20 +20,38 @@ class Checkout(object):
     def get_total(self):
         total = 0
         items = self.items.copy()
-        offers = self.shop.get_offers()
+        free_offers = self.shop.get_free_offers()
+        multi_offers = self.shop.get_multi_offers()
 
-        for offer in offers:
-            offer = offers[offer]            
-            if offer[0] in items:
-                while offer[1]<= items[offer[0]]:
-                    total += offer[2]
-                    items[offer[0]] -= offer[1]
-
-        for sku in items:
-            price = self.shop.get_price(sku)
-            if price == -1:
+        #apply free offers first
+        for free_offer in free_offers:
+            sku = free_offer.get_sku()
+            sku_price = self.shop.get_price(sku)
+            if sku_price == -1:
                 return -1
-            else:
-                total=total+(items[sku]*price)
+            quantity = free_offer.get_quantity()
+            freebie_sku = free_offer.get_free_sku()
+            if sku in items and freebie_sku in items:
+                while quantity <= items[sku] and items[freebie_sku]>0:
+                    total += quantity*sku_price
+                    items[sku]-= quantity
+                    items[freebie_sku]-=1
 
-        return total
+        #apply multibuy next - biggest to smallest
+        for multi_offer in multi_offers:
+            sku = multi_offer.get_sku() 
+            quantity = multi_offer.get_quantity()   
+            multi_price = multi_offer.get_price()      
+            if sku in items:
+                while quantity<= items[sku]:
+                    total += multi_price
+                    items[sku] -= quantity
+
+        #calculate rest of checkout
+        for sku in items:
+            sku_price = self.shop.get_price(sku)
+            if sku_price == -1:
+                return -1
+            total=total+(items[sku]*sku_price)
+
+        return(total)
