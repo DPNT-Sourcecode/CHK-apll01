@@ -25,12 +25,12 @@ def checkout(skus):
     shop.add_offer('H', 5, 45)
     shop.add_offer('K', 2, 150)
     shop.add_offer('N', 3, 'M')
-    shop.add_offer('P', 5, '200')
+    shop.add_offer('P', 5, 200)
     shop.add_offer('Q', 3, 80)
     shop.add_offer('R', 3, 'Q')
     shop.add_offer('U', 3, 'U')
-    shop.add_offer('V', 3, '130')
-    shop.add_offer('V', 2, '90')
+    shop.add_offer('V', 3, 130)
+    shop.add_offer('V', 2, 90)
 
     checkout = Checkout(shop)
 
