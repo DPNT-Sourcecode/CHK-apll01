@@ -13,5 +13,3 @@ def checkout(skus):
     shop.add_offer('B', 2, 45)
 
     checkout = Checkout(shop)
-
-
