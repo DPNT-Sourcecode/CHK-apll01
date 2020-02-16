@@ -52,6 +52,6 @@ class Checkout(object):
             sku_price = self.shop.get_price(sku)
             if sku_price == -1:
                 return -1
-            total=total+(items[sku]*sku_price)
+            if items[sku] >=0: total=total+(items[sku]*sku_price)
 
         return(total)
