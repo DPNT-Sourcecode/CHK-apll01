@@ -8,3 +8,4 @@ class TestCheckout():
         assert checkout_solution.checkout('C') == 20
         assert checkout_solution.checkout('D') == 15
         assert checkout_solution.checkout('') == 0
+        assert checkout_solution.checkout('DA') == -1
