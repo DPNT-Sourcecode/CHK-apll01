@@ -9,7 +9,12 @@ def checkout(skus):
     shop.set_price('B', 30)
     shop.set_price('C', 20)
     shop.set_price('D', 15
-    shop.add_offer('A', 3, 130)
+    
     shop.add_offer('B', 2, 45)
 
     checkout = Checkout(shop)
+
+    for sku in sku_list:
+        checkout.add_item(sku)
+
+    return checkout.get_total()
