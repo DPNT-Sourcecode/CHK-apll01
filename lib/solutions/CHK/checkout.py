@@ -18,10 +18,12 @@ class Checkout(object):
     def get_total(self):
         total = 0
         items = self.items.copy()
-        
+        offers = self.shop.get_offers()
+
         for sku in items:
             price = self.shop.get_price(sku)
             if price == -1:
                 return -1
             else:
                 total=total+(items[sku]*price)
+
