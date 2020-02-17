@@ -42,7 +42,23 @@ class Checkout(object):
             sku = multi_offer.get_sku() 
             quantity = multi_offer.get_quantity()   
             multi_price = multi_offer.get_price()      
-            if sku in items:
+            if type(sku) == list:
+                sku_list= []
+                for item in sku:
+                    if item in items:
+                        for x in range(items[item]):
+                            if self.shop.get_price(sku_list[0]) >= self.shop.get_price(item):
+                                sku_list.append(item)
+                            else:
+                                sku_list.insert(0,item)
+                
+                while quantity<= len(sku_list):        
+                    total += multi_price
+                    for i in range(quantity):
+                        items[sku_list[0]]-=1
+                        sku_list.pop(0)
+
+            elif sku in items:
                 while quantity<= items[sku]:
                     total += multi_price
                     items[sku] -= quantity
