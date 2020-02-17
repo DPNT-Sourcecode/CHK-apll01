@@ -8,8 +8,8 @@ def checkout(skus):
  
     price_list = [
         50,30,20,15,40,10,20,10,35,60,
-        80,90,15,40,10,50,30,50,30,20,
-        40,50,20,90,10,50
+        70,90,15,40,10,50,30,50,20,20,
+        40,50,20,17,20,21
         ]
 
     for index, price in enumerate(price_list):
@@ -23,7 +23,7 @@ def checkout(skus):
     shop.add_offer('F', 2, 'F')
     shop.add_offer('H', 10, 80)
     shop.add_offer('H', 5, 45)
-    shop.add_offer('K', 2, 150)
+    shop.add_offer('K', 2, 120)
     shop.add_offer('N', 3, 'M')
     shop.add_offer('P', 5, 200)
     shop.add_offer('Q', 3, 80)
@@ -31,6 +31,7 @@ def checkout(skus):
     shop.add_offer('U', 3, 'U')
     shop.add_offer('V', 3, 130)
     shop.add_offer('V', 2, 90)
+    shop.add_offer(['S','T','X','Y','Z'], 3, 45)
 
     checkout = Checkout(shop)
 
