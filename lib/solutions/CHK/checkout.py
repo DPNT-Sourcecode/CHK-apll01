@@ -47,7 +47,7 @@ class Checkout(object):
                 for sku_item in sku:
                     if sku_item in items:
                         for i in range(items[sku_item]):
-                            if len(sku_list) != 0 and self.shop.get_price(sku_list[0]) >= self.shop.get_price(sku_item):
+                            if len(sku_list) != 0 and self.shop.get_price(sku_list[0]) > self.shop.get_price(sku_item):
                                 sku_list.append(sku_item)
                             else:
                                 sku_list.insert(0,sku_item)

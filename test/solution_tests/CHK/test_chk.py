@@ -8,4 +8,4 @@ class TestCheckout():
         assert checkout_solution.checkout('AAAAASTX') == 245
         assert checkout_solution.checkout('') == 0
         assert checkout_solution.checkout('a') == -1
-        assert checkout_solution.checkout('SQQQTX') == 125
+        assert checkout_solution.checkout('LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH') == 1602
