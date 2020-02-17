@@ -37,7 +37,7 @@ class Checkout(object):
                     items[sku]-= quantity
                     items[freebie_sku]-=1
 
-        #apply multibuy next - biggest to smallest
+        #apply multibuy next
         for multi_offer in multi_offers:
             sku = multi_offer.get_sku() 
             quantity = multi_offer.get_quantity()   
@@ -47,7 +47,7 @@ class Checkout(object):
                 for item in sku:
                     if item in items:
                         for x in range(items[item]):
-                            if self.shop.get_price(sku_list[0]) >= self.shop.get_price(item):
+                            if len(sku_list) != 0 and self.shop.get_price(sku_list[0]) >= self.shop.get_price(item):
                                 sku_list.append(item)
                             else:
                                 sku_list.insert(0,item)
